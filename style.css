@@ -1,3 +1,4 @@
+/* --------- ESTILO BASE --------- */
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f8fa;
@@ -5,11 +6,13 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 30px;
+  margin: 0;
 }
 
 h1 {
   color: #333;
   margin-bottom: 25px;
+  text-align: center;
 }
 
 #seating-container {
@@ -24,7 +27,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px; /* espaço entre os lados */
+  gap: 20px; /* espaço entre lados */
 }
 
 .side {
@@ -57,6 +60,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  text-align: center;
 }
 
 button {
@@ -76,4 +80,101 @@ button:hover {
 
 #total {
   font-weight: bold;
+}
+
+/* --------- RESPONSIVIDADE --------- */
+
+/* Tablets (telas médias) */
+@media (max-width: 992px) {
+  #seating-container {
+    gap: 10px;
+  }
+
+  .side {
+    grid-template-columns: repeat(6, 28px);
+    gap: 5px;
+  }
+
+  .seat {
+    width: 26px;
+    height: 26px;
+  }
+
+  .row {
+    gap: 15px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Celulares (telas pequenas) */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  #seating-container {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .row {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .side {
+    grid-template-columns: repeat(6, 22px);
+    gap: 4px;
+  }
+
+  .seat {
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  button {
+    width: 90%;
+    max-width: 250px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  #total {
+    font-size: 14px;
+  }
+}
+
+/* Telas grandes (monitores) */
+@media (min-width: 1200px) {
+  .side {
+    grid-template-columns: repeat(6, 40px);
+    gap: 8px;
+  }
+
+  .seat {
+    width: 36px;
+    height: 36px;
+  }
+
+  .row {
+    gap: 25px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
 }
