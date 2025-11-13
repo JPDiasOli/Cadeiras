@@ -27,7 +27,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* espaço entre lados */
+  gap: 5vw; /* usa largura proporcional em vez de pixels fixos */
 }
 
 .side {
@@ -84,14 +84,10 @@ button:hover {
 
 /* --------- RESPONSIVIDADE --------- */
 
-/* Tablets (telas médias) */
+/* Tablets */
 @media (max-width: 992px) {
-  #seating-container {
-    gap: 10px;
-  }
-
   .side {
-    grid-template-columns: repeat(6, 28px);
+    grid-template-columns: repeat(6, 30px);
     gap: 5px;
   }
 
@@ -101,7 +97,7 @@ button:hover {
   }
 
   .row {
-    gap: 15px;
+    gap: 8vw;
   }
 
   button {
@@ -110,14 +106,14 @@ button:hover {
   }
 }
 
-/* Celulares (telas pequenas) */
+/* Celulares */
 @media (max-width: 600px) {
   body {
     padding: 15px;
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 15px;
   }
 
@@ -127,18 +123,19 @@ button:hover {
   }
 
   .row {
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 3vw; /* corredor mais estreito */
+    flex-wrap: nowrap;
+    transform: scale(0.9);
   }
 
   .side {
-    grid-template-columns: repeat(6, 22px);
+    grid-template-columns: repeat(6, 20px);
     gap: 4px;
   }
 
   .seat {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-width: 1px;
   }
 
@@ -147,7 +144,7 @@ button:hover {
   }
 
   button {
-    width: 90%;
+    width: 80%;
     max-width: 250px;
     font-size: 13px;
     padding: 8px 12px;
@@ -158,7 +155,7 @@ button:hover {
   }
 }
 
-/* Telas grandes (monitores) */
+/* Telas grandes */
 @media (min-width: 1200px) {
   .side {
     grid-template-columns: repeat(6, 40px);
@@ -171,7 +168,7 @@ button:hover {
   }
 
   .row {
-    gap: 25px;
+    gap: 6vw;
   }
 
   h1 {
