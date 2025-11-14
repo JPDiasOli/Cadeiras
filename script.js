@@ -4,49 +4,82 @@ const resetButton = document.getElementById("reset");
 const addRowButton = document.getElementById("add-row");
 const removeRowButton = document.getElementById("remove-row");
 
-let rowCount = 7;  // AGORA COMEÇA COM 7 FILEIRAS
-const seatsPerSide = 6;
+const settingsBtn = document.getElementById("settings-btn");
+const settingsModal = document.getElementById("settings-modal");
+const closeSettingsBtn = document.getElementById("close-settings");
+const saveSettingsBtn = document.getElementById("save-settings");
 
-function createRow() {
+const numRowsInput = document.getElementById("num-rows");
+const seatsPerSideInput = document.getElementById("seats-per-side");
+const colorFreeInput = document.getElementById("color-free");
+const colorSelectedInput = document.getElementById("color-selected");
+
+let rowCount = parseInt(numRowsInput.value);
+let seatsPerSide = parseInt(seatsPerSideInput.value);
+let colorFree = colorFreeInput.value;
+let colorSelected = colorSelectedInput.value;
+
+// Letras das fileiras (A, B, C...)
+function getRowLetter(index) {
+  return String.fromCharCode(65 + index); // 65 = A
+}
+
+function createRow(rowIndex) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("row-wrapper");
 
-  // REMOVIDO: NENHUM NOME DE FILEIRA
+  const letterDiv = document.createElement("div");
+  letterDiv.classList.add("row-letter");
+  letterDiv.textContent = getRowLetter(rowIndex);
 
   const row = document.createElement("div");
   row.classList.add("row");
 
   const leftSide = document.createElement("div");
   leftSide.classList.add("side");
-
   const rightSide = document.createElement("div");
   rightSide.classList.add("side");
 
   for (let i = 1; i <= seatsPerSide; i++) {
     const seatLeft = document.createElement("div");
     seatLeft.classList.add("seat");
+    seatLeft.style.background = colorFree;
+    seatLeft.textContent = i;
     leftSide.appendChild(seatLeft);
 
     const seatRight = document.createElement("div");
     seatRight.classList.add("seat");
+    seatRight.style.background = colorFree;
+    seatRight.textContent = i + seatsPerSide;
     rightSide.appendChild(seatRight);
   }
 
   const corridor = document.createElement("div");
-  corridor.style.width = "15px"; // corredor central menor
+  corridor.style.width = "15px";
 
   row.appendChild(leftSide);
   row.appendChild(corridor);
   row.appendChild(rightSide);
 
+  wrapper.appendChild(letterDiv);
   wrapper.appendChild(row);
   seatingContainer.appendChild(wrapper);
 }
 
+function renderSeating() {
+  seatingContainer.innerHTML = "";
+  for (let i = 0; i < rowCount; i++) createRow(i);
+  attachSeatEvents();
+}
 
-// Criar as 7 fileiras iniciais
-for (let i = 0; i < rowCount; i++) {
-  createRow();
+function attachSeatEvents() {
+  document.querySelectorAll(".seat").forEach(seat => {
+    seat.addEventListener("click", () => {
+      seat.classList.toggle("selected");
+      seat.style.background = seat.classList.contains("selected") ? colorSelected : colorFree;
+      updateTotal();
+    });
+  });
 }
 
 function updateTotal() {
@@ -54,30 +87,28 @@ function updateTotal() {
   totalSpan.textContent = selectedSeats.length;
 }
 
-seatingContainer.addEventListener("click", e => {
-  if (e.target.classList.contains("seat")) {
-    e.target.classList.toggle("selected");
-    updateTotal();
-  }
-});
-
+// Botões
 resetButton.addEventListener("click", () => {
-  document.querySelectorAll(".seat.selected").forEach(seat =>
-    seat.classList.remove("selected")
-  );
+  document.querySelectorAll(".seat.selected").forEach(seat => {
+    seat.classList.remove("selected");
+    seat.style.background = colorFree;
+  });
   updateTotal();
 });
 
-addRowButton.addEventListener("click", () => {
-  rowCount++;
-  createRow();
+addRowButton.addEventListener("click", () => { rowCount++; renderSeating(); });
+removeRowButton.addEventListener("click", () => { if(rowCount>1){ rowCount--; renderSeating(); }});
+
+settingsBtn.addEventListener("click", ()=> settingsModal.style.display="flex");
+closeSettingsBtn.addEventListener("click", ()=> settingsModal.style.display="none");
+saveSettingsBtn.addEventListener("click", ()=>{
+  rowCount = parseInt(numRowsInput.value);
+  seatsPerSide = parseInt(seatsPerSideInput.value);
+  colorFree = colorFreeInput.value;
+  colorSelected = colorSelectedInput.value;
+  renderSeating();
+  settingsModal.style.display="none";
 });
 
-removeRowButton.addEventListener("click", () => {
-  const allRows = document.querySelectorAll(".row-wrapper");
-  if (allRows.length > 0) {
-    allRows[allRows.length - 1].remove();
-    rowCount--;
-    updateTotal();
-  }
-});
+// Inicializa
+renderSeating();
