@@ -10,55 +10,53 @@
 <body>
 
 <div id="logo-container">
-  <img id="logo" src="logo.png" alt="Logo">
+  <img id="logo" src="logo.png" alt="Logo" loading="lazy">
 </div>
 
 <div id="main-card">
-  <button id="settings-btn">⚙️</button>
+  <button id="settings-btn" aria-label="Configurações">⚙️</button>
   <h1>Púlpito</h1>
 
-  <div id="seating-container"></div>
+  <div id="seating-container" role="application" aria-label="Mapa de assentos"></div>
 
   <div class="controls">
     <div class="row-controls">
-      <button class="circle-btn plus" id="add-row">+</button>
-      <button class="circle-btn minus" id="remove-row">-</button>
+      <button class="circle-btn plus" id="add-row" aria-label="Adicionar fileira">+</button>
+      <button class="circle-btn minus" id="remove-row" aria-label="Remover fileira">-</button>
     </div>
     <button id="reset">Resetar Seleção</button>
-    <button id="load-from-db">Carregar Última Versão</button>
     <p>Total selecionados: <span id="total">0</span></p>
-    <p id="status-message" style="font-size: 12px; color: #339af0; margin: 5px 0;"></p>
+    <p id="status-message"></p>
   </div>
 
   <div id="legend">
-    <div class="legend-item"><div class="legend-color legend-free"></div> Livre</div>
-    <div class="legend-item"><div class="legend-color legend-selected"></div> Selecionado</div>
+    <div class="legend-item"><div class="legend-color legend-free" aria-hidden="true"></div> <span>Livre</span></div>
+    <div class="legend-item"><div class="legend-color legend-selected" aria-hidden="true"></div> <span>Selecionado</span></div>
   </div>
 </div>
 
 <!-- MODAL CONFIGURAÇÕES -->
-<div id="settings-modal">
+<div id="settings-modal" role="dialog" aria-labelledby="settings-title" aria-hidden="true">
   <div id="settings-content">
-    <label>Número de fileiras:</label>
+    <label for="num-rows">Número de fileiras:</label>
     <input type="number" id="num-rows" min="1" value="7">
 
-    <label>Número de assentos por lado:</label>
+    <label for="seats-per-side">Número de assentos por lado:</label>
     <input type="number" id="seats-per-side" min="1" value="6">
 
-    <label>Cor do assento livre:</label>
+    <label for="color-free">Cor do assento livre:</label>
     <input type="color" id="color-free" value="#f1f3f5">
 
-    <label>Cor do assento selecionado:</label>
+    <label for="color-selected">Cor do assento selecionado:</label>
     <input type="color" id="color-selected" value="#ff6b6b">
 
-    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+    <div style="display:flex; justify-content:space-between; margin-top:10px; gap:10px;">
       <button id="save-settings">Salvar</button>
       <button id="close-settings">Fechar</button>
     </div>
   </div>
 </div>
 
-<!-- Adicione esta linha ANTES do script.js -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 </body>

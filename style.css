@@ -1,4 +1,8 @@
 /* BASE */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: #e9ecf4;
@@ -6,17 +10,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  padding: 10px;
 }
 
-#logo-container { margin-top: 20px; }
-#logo { width: 140px; }
+#logo-container { 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+#logo { 
+  width: 120px; 
+  max-width: 100%;
+  height: auto;
+}
 
 #main-card {
   background: #fff;
-  width: 92%;
+  width: 100%;
   max-width: 650px;
-  margin-top: 20px;
-  padding: 25px 30px;
+  margin-top: 10px;
+  padding: 20px 15px;
   border-radius: 18px;
   box-shadow: 0 5px 25px rgba(0,0,0,0.10);
   position: relative;
@@ -27,14 +40,14 @@ h1 {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border: 3px solid #1f3c88;
   border-radius: 12px;
   background: #f2f5ff;
   color: #1f3c88;
   font-weight: 600;
-  font-size: 22px;
-  max-width: 180px;
+  font-size: 18px;
+  max-width: 150px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -42,74 +55,181 @@ h1 {
 /* ENGRENAGEM */
 #settings-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   background: #3bc9db;
   border: none;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   transition: 0.2s;
+  z-index: 10;
 }
 #settings-btn:hover { background: #22b8cf; }
 
 /* MODAL CONFIGURAÇÕES */
 #settings-modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
   background: rgba(0,0,0,0.5);
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  padding: 15px;
 }
 #settings-content {
   background: #fff;
-  padding: 20px 25px;
+  padding: 20px;
   border-radius: 12px;
-  width: 320px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
-#settings-content label { font-weight: bold; }
+#settings-content label { 
+  font-weight: bold; 
+  font-size: 14px;
+}
 #settings-content input[type="number"], #settings-content input[type="color"] {
   width: 100%;
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 14px;
 }
 #settings-content button {
-  padding: 8px 15px;
+  padding: 10px 15px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   transition: 0.2s;
+  font-size: 14px;
 }
 #save-settings { background: #3bc9db; color: white; }
 #save-settings:hover { background: #22b8cf; }
 #close-settings { background: #ff6b6b; color: white; }
 #close-settings:hover { background: #fa5252; }
 
-/* FILEIRAS */
-#seating-container { display: flex; flex-direction: column; gap: 15px; }
-.row-wrapper { display: flex; align-items: center; gap: 10px; }
-.row-letter { width: 20px; font-weight: bold; font-size: 18px; text-align: center; }
-.row { display: flex; align-items: center; justify-content: center; gap: 15px; }
+/* FILEIRAS - SCROLL GERAL */
+#seating-container { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 5px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f3f5;
+}
+
+/* Custom scrollbar para webkit */
+#seating-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+#seating-container::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 4px;
+}
+#seating-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+#seating-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.row-wrapper { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+  width: 100%;
+  min-height: 50px;
+  flex-shrink: 0;
+}
+
+.row-letter { 
+  width: 22px; 
+  font-weight: bold; 
+  font-size: 16px; 
+  text-align: center; 
+  flex-shrink: 0;
+}
+
+.row { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 15px;
+  flex: 1;
+}
+
 .side {
   display: grid;
-  grid-template-columns: repeat(6, 36px);
-  gap: 10px;
-  margin-left: 10px;
-  margin-right: 25px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Tamanho das cadeiras por tamanho de tela */
+@media (max-width: 480px) {
+  .side {
+    gap: 5px;
+  }
+  
+  .seat {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+  
+  .row {
+    gap: 10px;
+  }
+  
+  .row-letter {
+    width: 18px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .side {
+    gap: 7px;
+  }
+  
+  .seat {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 769px) {
+  .side {
+    gap: 10px;
+  }
+  
+  .seat {
+    width: 38px;
+    height: 38px;
+    font-size: 12px;
+  }
 }
 
 .seat {
-  width: 32px;
-  height: 32px;
   background: #f1f3f5;
   border: 2px solid #ced4da;
   border-radius: 6px;
@@ -118,56 +238,154 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   color: #000;
+  flex-shrink: 0;
 }
-.seat:hover { transform: scale(1.15); }
+.seat:hover { transform: scale(1.1); }
 .seat.selected { background: #ff6b6b; border-color: #c92a2a; }
 
+.corridor {
+  width: 20px;
+  flex-shrink: 0;
+}
+
 /* CONTROLES */
-.controls { text-align: center; margin-top: 25px; }
-.row-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 12px; }
-.circle-btn { width: 45px; height: 45px; border-radius: 12px; border: none; font-size: 26px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.controls { 
+  text-align: center; 
+  margin-top: 20px; 
+  padding: 0 10px;
+}
+.row-controls { 
+  display: flex; 
+  justify-content: center; 
+  gap: 12px; 
+  margin-bottom: 12px; 
+  flex-wrap: wrap;
+}
+.circle-btn { 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 10px; 
+  border: none; 
+  font-size: 22px; 
+  color: #fff; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  flex-shrink: 0;
+}
 .plus { background: #3bc9db; }
 .plus:hover { background: #22b8cf; }
 .minus { background: #ff6b6b; }
 .minus:hover { background: #fa5252; }
 
-#reset { background: #ffa94d; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; transition: 0.2s; }
+#reset {
+  background: #ffa94d;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 4px;
+  min-width: 140px;
+}
 #reset:hover { background: #f08c00; }
 
-#total { font-weight: bold; color: #1f3c88; }
+.controls p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+#total { 
+  font-weight: bold; 
+  color: #1f3c88; 
+  font-size: 16px;
+}
 
 /* LEGENDA */
-#legend { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
-.legend-item { display: flex; align-items: center; gap: 6px; }
-.legend-color { width: 20px; height: 20px; border-radius: 4px; }
+#legend { 
+  display: flex; 
+  justify-content: center; 
+  gap: 12px; 
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+.legend-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  font-size: 12px;
+}
+.legend-color { 
+  width: 16px; 
+  height: 16px; 
+  border-radius: 4px; 
+  flex-shrink: 0;
+}
 .legend-free { background: #f1f3f5; border: 2px solid #ced4da; }
 .legend-selected { background: #ff6b6b; border: 2px solid #c92a2a; }
 
-
-/* Adicione estas regras ao final do arquivo */
-
-#load-from-db {
-  background: #339af0;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin: 5px;
-}
-
-#load-from-db:hover {
-  background: #228be6;
-}
-
+/* STATUS MESSAGE */
 #status-message {
-  font-size: 12px;
+  font-size: 11px;
   margin: 5px 0;
   min-height: 15px;
   font-weight: 500;
+  text-align: center;
 }
 
+/* Melhorias para telas muito pequenas */
+@media (max-width: 360px) {
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 9px;
+  }
+  
+  .side {
+    gap: 4px;
+  }
+  
+  .corridor {
+    width: 15px;
+  }
+  
+  #main-card {
+    padding: 15px 10px;
+  }
+  
+  .row-controls {
+    gap: 8px;
+  }
+  
+  .circle-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  #reset {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-width: 120px;
+  }
+  
+  #seating-container {
+    max-height: 45vh;
+  }
+}
+
+/* Para telas muito grandes */
+@media (min-width: 1200px) {
+  #main-card {
+    max-width: 700px;
+  }
+  
+  .seat {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+}

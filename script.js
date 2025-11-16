@@ -9,7 +9,6 @@ const totalSpan = document.getElementById("total");
 const resetButton = document.getElementById("reset");
 const addRowButton = document.getElementById("add-row");
 const removeRowButton = document.getElementById("remove-row");
-const loadFromDbButton = document.getElementById("load-from-db");
 const statusMessage = document.getElementById("status-message");
 
 const settingsBtn = document.getElementById("settings-btn");
@@ -101,8 +100,9 @@ function createRow(rowIndex) {
     rightSide.appendChild(seatRight);
   }
 
+  // Corredor com classe CSS
   const corridor = document.createElement("div");
-  corridor.style.width = "15px";
+  corridor.classList.add("corridor");
 
   row.appendChild(leftSide);
   row.appendChild(corridor);
@@ -266,18 +266,21 @@ async function loadFromDatabase() {
       // Renderizar assentos (que agora vão usar o estado global)
       renderSeating();
 
-      showStatus('Configuração carregada com sucesso!', '#51cf66');
+      showStatus('Configuração carregada!', '#51cf66');
       
       // Remove a mensagem após 3 segundos
       setTimeout(() => {
         statusMessage.textContent = '';
       }, 3000);
     } else {
-      showStatus('Nenhuma configuração salva encontrada.', '#ffa94d');
+      // Nenhum dado salvo ainda, apenas renderiza com configurações padrão
+      renderSeating();
     }
   } catch (error) {
     console.error('Erro:', error);
     showStatus('Erro ao conectar com o banco de dados', '#ff6b6b');
+    // Renderiza mesmo com erro
+    renderSeating();
   }
 }
 
@@ -324,9 +327,6 @@ removeRowButton.addEventListener("click", () => {
   }
 });
 
-// Botão de carregar
-loadFromDbButton.addEventListener("click", loadFromDatabase);
-
 settingsBtn.addEventListener("click", ()=> settingsModal.style.display="flex");
 closeSettingsBtn.addEventListener("click", ()=> settingsModal.style.display="none");
 saveSettingsBtn.addEventListener("click", ()=>{
@@ -343,8 +343,8 @@ saveSettingsBtn.addEventListener("click", ()=>{
 document.addEventListener('DOMContentLoaded', function() {
   loadFromDatabase();
   
-  // Configurar polling para atualizações automáticas a cada 5 segundos
-  setInterval(loadFromDatabase, 5000);
+  // Configurar polling para atualizações automáticas a cada 3 segundos
+  setInterval(loadFromDatabase, 3000);
 });
 
 // Inicializa
