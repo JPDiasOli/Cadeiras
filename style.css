@@ -144,3 +144,30 @@ h1 {
 .legend-color { width: 20px; height: 20px; border-radius: 4px; }
 .legend-free { background: #f1f3f5; border: 2px solid #ced4da; }
 .legend-selected { background: #ff6b6b; border: 2px solid #c92a2a; }
+
+
+/* Adicione estas regras ao final do arquivo */
+
+#load-from-db {
+  background: #339af0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 5px;
+}
+
+#load-from-db:hover {
+  background: #228be6;
+}
+
+#status-message {
+  font-size: 12px;
+  margin: 5px 0;
+  min-height: 15px;
+  font-weight: 500;
+}
+
