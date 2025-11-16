@@ -11,15 +11,15 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 10px;
+  padding: 5px;
 }
 
 #logo-container { 
-  margin-top: 10px; 
-  margin-bottom: 10px;
+  margin-top: 5px; 
+  margin-bottom: 5px;
 }
 #logo { 
-  width: 120px; 
+  width: 100px; 
   max-width: 100%;
   height: auto;
 }
@@ -28,10 +28,10 @@ body {
   background: #fff;
   width: 100%;
   max-width: 650px;
-  margin-top: 10px;
-  padding: 20px 15px;
-  border-radius: 18px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+  margin-top: 5px;
+  padding: 15px 10px;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.10);
   position: relative;
 }
 
@@ -39,15 +39,15 @@ h1 {
   display: block;
   width: 100%;
   text-align: center;
-  padding: 10px 0;
-  margin-bottom: 15px;
-  border: 3px solid #1f3c88;
-  border-radius: 12px;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border: 2px solid #1f3c88;
+  border-radius: 8px;
   background: #f2f5ff;
   color: #1f3c88;
   font-weight: 600;
-  font-size: 18px;
-  max-width: 150px;
+  font-size: 16px;
+  max-width: 120px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -55,14 +55,14 @@ h1 {
 /* ENGRENAGEM */
 #settings-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 12px;
+  right: 12px;
   background: #3bc9db;
   border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
+  padding: 5px 8px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   transition: 0.2s;
   z-index: 10;
@@ -81,71 +81,71 @@ h1 {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: 15px;
+  padding: 10px;
 }
 #settings-content {
   background: #fff;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 15px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-height: 90vh;
+  gap: 10px;
+  max-height: 85vh;
   overflow-y: auto;
 }
 #settings-content label { 
   font-weight: bold; 
-  font-size: 14px;
+  font-size: 12px;
 }
 #settings-content input[type="number"], #settings-content input[type="color"] {
   width: 100%;
-  padding: 8px 10px;
-  border-radius: 6px;
+  padding: 6px 8px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 12px;
 }
 #settings-content button {
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   transition: 0.2s;
-  font-size: 14px;
+  font-size: 12px;
 }
 #save-settings { background: #3bc9db; color: white; }
 #save-settings:hover { background: #22b8cf; }
 #close-settings { background: #ff6b6b; color: white; }
 #close-settings:hover { background: #fa5252; }
 
-/* FILEIRAS - SCROLL GERAL */
+/* FILEIRAS - OTIMIZADO PARA TELAS PEQUENAS */
 #seating-container { 
   display: flex; 
   flex-direction: column; 
-  gap: 12px; 
+  gap: 8px; 
   width: 100%;
-  max-height: 50vh;
+  max-height: 45vh;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 5px 10px;
+  padding: 3px 5px;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f1f3f5;
 }
 
 /* Custom scrollbar para webkit */
 #seating-container::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 #seating-container::-webkit-scrollbar-track {
   background: #f1f3f5;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 #seating-container::-webkit-scrollbar-thumb {
   background: #c1c1c1;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 #seating-container::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
@@ -154,16 +154,16 @@ h1 {
 .row-wrapper { 
   display: flex; 
   align-items: center; 
-  gap: 10px;
+  gap: 6px;
   width: 100%;
-  min-height: 50px;
+  min-height: 35px;
   flex-shrink: 0;
 }
 
 .row-letter { 
-  width: 22px; 
+  width: 16px; 
   font-weight: bold; 
-  font-size: 16px; 
+  font-size: 12px; 
   text-align: center; 
   flex-shrink: 0;
 }
@@ -172,67 +172,129 @@ h1 {
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  gap: 15px;
+  gap: 8px;
   flex: 1;
 }
 
 .side {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
-/* Tamanho das cadeiras por tamanho de tela */
+/* Tamanho das cadeiras para Galaxy A02s e telas pequenas */
 @media (max-width: 480px) {
   .side {
-    gap: 5px;
+    gap: 3px;
   }
   
   .seat {
-    width: 30px;
-    height: 30px;
-    font-size: 10px;
+    width: 22px;
+    height: 22px;
+    font-size: 8px;
+    border-width: 1px;
   }
   
   .row {
-    gap: 10px;
+    gap: 6px;
   }
   
   .row-letter {
-    width: 18px;
+    width: 14px;
+    font-size: 11px;
+  }
+  
+  .corridor {
+    width: 10px;
+  }
+  
+  #seating-container {
+    max-height: 40vh;
+    gap: 6px;
+  }
+}
+
+/* Para telas extremamente pequenas (Galaxy A02s) */
+@media (max-width: 360px) {
+  body {
+    padding: 3px;
+  }
+  
+  #main-card {
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+  
+  .side {
+    gap: 2px;
+  }
+  
+  .seat {
+    width: 20px;
+    height: 20px;
+    font-size: 7px;
+  }
+  
+  .row {
+    gap: 4px;
+  }
+  
+  .row-letter {
+    width: 12px;
+    font-size: 10px;
+  }
+  
+  .corridor {
+    width: 8px;
+  }
+  
+  #seating-container {
+    max-height: 35vh;
+    gap: 4px;
+    padding: 2px;
+  }
+  
+  h1 {
     font-size: 14px;
+    max-width: 100px;
+    padding: 6px 0;
+    margin-bottom: 10px;
+  }
+  
+  #logo {
+    width: 80px;
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
   .side {
-    gap: 7px;
+    gap: 5px;
   }
   
   .seat {
-    width: 34px;
-    height: 34px;
-    font-size: 11px;
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
   }
 }
 
 @media (min-width: 769px) {
   .side {
-    gap: 10px;
+    gap: 8px;
   }
   
   .seat {
-    width: 38px;
-    height: 38px;
-    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
   }
 }
 
 .seat {
   background: #f1f3f5;
   border: 2px solid #ced4da;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
   display: flex;
@@ -240,34 +302,35 @@ h1 {
   justify-content: center;
   color: #000;
   flex-shrink: 0;
+  font-weight: bold;
 }
-.seat:hover { transform: scale(1.1); }
+.seat:hover { transform: scale(1.05); }
 .seat.selected { background: #ff6b6b; border-color: #c92a2a; }
 
 .corridor {
-  width: 20px;
+  width: 12px;
   flex-shrink: 0;
 }
 
 /* CONTROLES */
 .controls { 
   text-align: center; 
-  margin-top: 20px; 
-  padding: 0 10px;
+  margin-top: 15px; 
+  padding: 0 8px;
 }
 .row-controls { 
   display: flex; 
   justify-content: center; 
-  gap: 12px; 
-  margin-bottom: 12px; 
+  gap: 10px; 
+  margin-bottom: 10px; 
   flex-wrap: wrap;
 }
 .circle-btn { 
-  width: 40px; 
-  height: 40px; 
-  border-radius: 10px; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 8px; 
   border: none; 
-  font-size: 22px; 
+  font-size: 18px; 
   color: #fff; 
   font-weight: bold; 
   cursor: pointer; 
@@ -282,110 +345,69 @@ h1 {
 #reset {
   background: #ffa94d;
   color: white;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 6px;
+  font-size: 12px;
   cursor: pointer;
   transition: 0.2s;
-  margin: 4px;
-  min-width: 140px;
+  margin: 3px;
+  min-width: 120px;
 }
 #reset:hover { background: #f08c00; }
 
 .controls p {
-  margin: 8px 0;
-  font-size: 14px;
+  margin: 6px 0;
+  font-size: 12px;
 }
 
 #total { 
   font-weight: bold; 
   color: #1f3c88; 
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* LEGENDA */
 #legend { 
   display: flex; 
   justify-content: center; 
-  gap: 12px; 
-  margin-top: 15px;
+  gap: 10px; 
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 .legend-item { 
   display: flex; 
   align-items: center; 
-  gap: 6px; 
-  font-size: 12px;
+  gap: 4px; 
+  font-size: 10px;
 }
 .legend-color { 
-  width: 16px; 
-  height: 16px; 
-  border-radius: 4px; 
+  width: 12px; 
+  height: 12px; 
+  border-radius: 3px; 
   flex-shrink: 0;
 }
-.legend-free { background: #f1f3f5; border: 2px solid #ced4da; }
-.legend-selected { background: #ff6b6b; border: 2px solid #c92a2a; }
+.legend-free { background: #f1f3f5; border: 1px solid #ced4da; }
+.legend-selected { background: #ff6b6b; border: 1px solid #c92a2a; }
 
 /* STATUS MESSAGE */
 #status-message {
-  font-size: 11px;
-  margin: 5px 0;
-  min-height: 15px;
+  font-size: 9px;
+  margin: 3px 0;
+  min-height: 12px;
   font-weight: 500;
   text-align: center;
-}
-
-/* Melhorias para telas muito pequenas */
-@media (max-width: 360px) {
-  .seat {
-    width: 28px;
-    height: 28px;
-    font-size: 9px;
-  }
-  
-  .side {
-    gap: 4px;
-  }
-  
-  .corridor {
-    width: 15px;
-  }
-  
-  #main-card {
-    padding: 15px 10px;
-  }
-  
-  .row-controls {
-    gap: 8px;
-  }
-  
-  .circle-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-  }
-  
-  #reset {
-    padding: 8px 12px;
-    font-size: 13px;
-    min-width: 120px;
-  }
-  
-  #seating-container {
-    max-height: 45vh;
-  }
 }
 
 /* Para telas muito grandes */
 @media (min-width: 1200px) {
   #main-card {
-    max-width: 700px;
+    max-width: 600px;
   }
   
   .seat {
-    width: 40px;
-    height: 40px;
-    font-size: 13px;
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
   }
 }
